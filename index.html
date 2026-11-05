@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>สถานะร่าง รายงานประจำปี 2569</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4F1; --surface:#FFFFFF; --surface-2:#F7F8F6;
+  --ink:#17201B; --ink-2:#47524B; --ink-3:#77827B;
+  --line:#D9DFD8; --line-2:#E8ECE6;
+  --accent:#2B55C9; --accent-ink:#FFFFFF;
+  --st-todo:#808B96; --st-doing:#C98A00; --st-review:#7355D9; --st-done:#1A9966; --st-rework:#D4651F; --st-pass:#1B8A9E;
+  --bad:#D6403B; --warn:#C98A00; --ok:#1A9966;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1411; --surface:#171D19; --surface-2:#1C231E;
+    --ink:#E8EEE9; --ink-2:#AEB9B1; --ink-3:#7F8B83;
+    --line:#2C352F; --line-2:#232B26;
+    --accent:#7C9CFF; --accent-ink:#0F1411;
+    --st-todo:#8E99A5; --st-doing:#F0B429; --st-review:#A18BFF; --st-done:#3FC48C; --st-rework:#F59A5C; --st-pass:#4CC3D9;
+    --bad:#F0716C; --warn:#F0B429; --ok:#3FC48C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1411; --surface:#171D19; --surface-2:#1C231E;
+  --ink:#E8EEE9; --ink-2:#AEB9B1; --ink-3:#7F8B83;
+  --line:#2C352F; --line-2:#232B26;
+  --accent:#7C9CFF; --accent-ink:#0F1411;
+  --st-todo:#8E99A5; --st-doing:#F0B429; --st-review:#A18BFF; --st-done:#3FC48C; --st-rework:#F59A5C; --st-pass:#4CC3D9;
+  --bad:#F0716C; --warn:#F0B429; --ok:#3FC48C;
+  color-scheme:dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.65;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:22px 16px 64px}
+
+.st-none{--c:var(--st-todo)} .st-work{--c:var(--st-doing)} .st-check{--c:var(--st-review)} .st-rework{--c:var(--st-rework)} .st-pass{--c:var(--st-pass)} .st-final{--c:var(--st-done)}
+.sev-bad{--c:var(--bad)} .sev-warn{--c:var(--warn)} .sev-ok{--c:var(--ok)} .sev-info{--c:var(--ink-3)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px 40px;align-items:end;padding:6px 0 22px}
+.title{margin:0;font-size:30px;line-height:1.3;font-weight:700;letter-spacing:-.01em;overflow-wrap:anywhere}
+.title-btn{all:unset;cursor:text;display:block;border-radius:6px}
+.title-btn:hover{background:var(--surface-2)}
+.title-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.title-in{width:100%;font-size:30px;font-weight:700;line-height:1.3;padding:0 4px;border:1px solid var(--accent);border-radius:6px;background:var(--surface)}
+.sub{margin:6px 0 0;color:var(--ink-2)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:3px 12px;border-radius:999px;font-size:13px;font-weight:500;border:1px solid color-mix(in srgb,var(--c,var(--ink-3)) 40%,var(--surface));background:color-mix(in srgb,var(--c,var(--ink-3)) 10%,var(--surface))}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--ink-3))}
+.plan-top{display:flex;align-items:flex-end;flex-wrap:wrap;gap:8px 28px}
+.big{font-size:58px;line-height:1;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.big small{font-size:24px;font-weight:600;margin-left:2px;color:var(--ink-2)}
+.cap{font-size:13px;color:var(--ink-2);margin-top:4px}
+.mid{font-size:26px;line-height:1.1;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.verdict{margin-left:auto;padding:4px 14px;border-radius:999px;font-weight:600;font-size:14px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,var(--surface));background:color-mix(in srgb,var(--c) 11%,var(--surface))}
+.rail{position:relative;height:14px;margin:26px 0 8px;border-radius:7px;background:var(--line-2);border:1px solid var(--line)}
+.rail-fill{position:absolute;inset:0 auto 0 0;border-radius:6px;background:var(--accent);transition:width .35s ease}
+.rail-tick{position:absolute;top:-8px;bottom:-8px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--ink);transition:left .35s ease}
+.rail-tick::after{content:"แผน";position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.forecast{font-size:13.5px;color:var(--ink-2);min-height:1.65em}
+
+/* tabs */
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:18px}
+.tabs{display:flex;gap:2px;flex-wrap:wrap}
+.tab{all:unset;cursor:pointer;padding:10px 16px;font-weight:500;color:var(--ink-2);border-bottom:2px solid transparent;margin-bottom:-1px;display:inline-flex;gap:8px;align-items:center}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cnt{min-width:22px;padding:0 7px;border-radius:999px;font-size:12px;line-height:20px;text-align:center;background:var(--line-2);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.cnt.sev-bad,.cnt.sev-warn{background:var(--c);color:var(--surface)}
+.bar-end{margin-left:auto;padding-bottom:6px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:6px;border:1px solid var(--line);background:var(--surface);font-weight:500}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.danger{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,var(--surface))}
+.btn.danger.armed{background:var(--bad);color:var(--surface);border-color:var(--bad)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* pipeline strip */
+.pipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:14px}
+.stage{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:8px 12px 10px;border:1px solid var(--line);border-top:3px solid var(--c,var(--ink-3));border-radius:8px;background:var(--surface)}
+.stage:hover{background:var(--surface-2)}
+.stage[aria-pressed="true"]{background:color-mix(in srgb,var(--c,var(--ink-3)) 14%,var(--surface));border-color:var(--c,var(--ink-3));box-shadow:0 0 0 1px var(--c,var(--ink-3))}
+.stage:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stage-n{font-size:22px;font-weight:700;line-height:1.25;font-variant-numeric:tabular-nums}
+.stage-l{font-size:12.5px;line-height:1.4;color:var(--ink-2)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.search{margin-left:auto;min-width:200px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+
+/* rows */
+.rows{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 260px 150px 76px;gap:10px 18px;align-items:center;padding:12px 16px 12px 18px;border-bottom:1px solid var(--line-2);box-shadow:inset 3px 0 0 var(--hc,transparent)}
+.row:last-child{border-bottom:0}
+.row.h-bad{--hc:var(--bad)} .row.h-warn{--hc:var(--warn)}
+.r-name{all:unset;cursor:pointer;font-weight:600;overflow-wrap:anywhere;border-radius:4px}
+.r-name:hover{text-decoration:underline}
+.r-name:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.r-meta{display:flex;flex-wrap:wrap;gap:0 16px;font-size:13px;color:var(--ink-2)}
+.r-issue{font-size:13px;color:var(--c);font-weight:500}
+.sel{appearance:none;-webkit-appearance:none;width:100%;padding:6px 30px 6px 14px;border-radius:999px;font-weight:500;text-overflow:ellipsis;white-space:nowrap;border:1px solid color-mix(in srgb,var(--c) 45%,var(--surface));background-color:color-mix(in srgb,var(--c) 13%,var(--surface));background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.sel[disabled]{opacity:.75;cursor:default}
+.r-prog{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px}
+.pbar{height:8px;border-radius:4px;background:var(--line-2);border:1px solid var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--accent);transition:width .3s ease}
+.pct{min-width:42px;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.r-edit{text-align:right}
+.link-btn{all:unset;cursor:pointer;color:var(--accent);font-weight:500;padding:2px 4px;border-radius:4px}
+.link-btn:hover{text-decoration:underline}
+.link-btn:focus-visible{outline:2px solid var(--accent)}
+.muted{color:var(--ink-2);font-size:13.5px}
+.empty{padding:44px 20px;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:10px;background:var(--surface)}
+.empty h3{margin:0 0 6px;color:var(--ink);font-size:18px}
+.empty .btn{margin-top:14px}
+
+.feed{margin:26px 0 0}
+.feed h3,.sec h3{margin:0 0 10px;font-size:16px}
+.feed ul{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.feed li{padding:9px 16px;border-bottom:1px solid var(--line-2);font-size:14px;display:flex;flex-wrap:wrap;gap:0 6px;align-items:baseline}
+.feed li:last-child{border-bottom:0}
+.feed .who{font-weight:600}
+.feed time{margin-left:auto;font-size:12.5px;color:var(--ink-3)}
+.mini{padding:1px 10px;border-radius:999px;font-size:12.5px;font-weight:500;background:color-mix(in srgb,var(--c) 15%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 40%,var(--surface))}
+
+/* timeline */
+.tl-tools{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg button{all:unset;cursor:pointer;padding:5px 14px;font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--ink-2);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;background:var(--c)}
+.tick-sw{width:3px;height:14px;background:var(--ink);border-radius:2px}
+.tl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.tl-inner{position:relative;min-width:100%}
+.tl-head,.tl-row{display:flex}
+.tl-corner,.tl-label{position:sticky;left:0;z-index:5;flex:none;width:210px;background:var(--surface);border-right:1px solid var(--line)}
+.tl-corner{padding:8px 14px;font-weight:600;font-size:13px;color:var(--ink-2);display:flex;align-items:flex-end;height:58px;border-bottom:1px solid var(--line)}
+.tl-hdr{position:relative;flex:none;height:58px;border-bottom:1px solid var(--line)}
+.tl-mon{position:absolute;top:0;height:29px;padding:3px 8px;font-size:13px;font-weight:600;border-left:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.tl-d{position:absolute;top:29px;height:29px;text-align:center;font-size:12px;line-height:29px;color:var(--ink-2);border-left:1px solid var(--line-2);overflow:hidden;font-variant-numeric:tabular-nums}
+.tl-d.we{color:var(--ink-3);background:color-mix(in srgb,var(--ink-3) 8%,transparent)}
+.tl-today-tag{position:absolute;top:31px;transform:translateX(-50%);padding:0 8px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:600;line-height:22px;z-index:3;white-space:nowrap}
+.tl-body{position:relative}
+.tl-row{height:40px;border-bottom:1px solid var(--line-2);position:relative;z-index:1}
+.tl-label{display:flex;flex-direction:column;justify-content:center;padding:0 14px;line-height:1.3}
+.tl-label button{all:unset;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-label button:hover{text-decoration:underline}
+.tl-label button:focus-visible{outline:2px solid var(--accent)}
+.tl-label small{font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-track{position:relative;flex:none}
+.tl-under,.tl-over{position:absolute;top:0;bottom:0;left:210px;pointer-events:none}
+.tl-under{z-index:0}
+.tl-over{z-index:3}
+.we-col{position:absolute;top:0;bottom:0;background:color-mix(in srgb,var(--ink-3) 8%,transparent)}
+.today-line{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--accent)}
+.tl-bar{all:unset;box-sizing:border-box;cursor:pointer;position:absolute;top:8px;height:24px;border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--c) 20%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 55%,var(--surface))}
+.tl-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tl-bar.h-bad{box-shadow:0 0 0 2px var(--bad)}
+.tl-bar.h-warn{box-shadow:0 0 0 2px var(--warn)}
+.tl-fill{position:absolute;inset:0 auto 0 0;background:var(--c);opacity:.88}
+.tl-txt{position:relative;display:block;padding:0 8px;font-size:12px;font-weight:600;line-height:22px;color:var(--ink);white-space:nowrap}
+.tl-tick{position:absolute;top:-1px;bottom:-1px;width:3px;margin-left:-1.5px;background:var(--ink);border-radius:2px}
+.undated{margin-top:16px;font-size:14px;color:var(--ink-2)}
+.undated button{margin-right:12px}
+
+/* plan rows in timeline */
+.chk{display:inline-flex;gap:8px;align-items:center;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.chk input{accent-color:var(--accent)}
+.tl-sec{background:var(--surface-2)}
+.tl-sec .tl-label{background:var(--surface-2);justify-content:center}
+.tl-sec strong{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-name{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-name.top{font-weight:600}
+.pl-name.sub{padding-left:12px;color:var(--ink-2)}
+.pl-bar{position:absolute;top:11px;height:18px;border-radius:4px;border:1.5px solid var(--c);overflow:hidden}
+.pl-bar.top{top:9px;height:22px}
+.pl-wait{--c:var(--st-todo);background:transparent}
+.pl-doing{--c:var(--st-doing);background:color-mix(in srgb,var(--c) 30%,var(--surface))}
+.pl-done{--c:var(--st-done);background:var(--c)}
+.pl-bar .tl-txt{line-height:15px;font-size:11.5px;padding:0 6px}
+.pl-done .tl-txt{color:var(--surface)}
+/* overview */
+.phases{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch;margin-bottom:16px}
+.phase-card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:14px 18px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.phase-card:hover{background:var(--surface-2)}
+.phase-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pc-step{font-size:12.5px;color:var(--ink-3);font-weight:600}
+.pc-name{font-size:16px;font-weight:600}
+.pc-pct{font-size:34px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.pc-sub{font-size:13px;color:var(--ink-2)}
+.phase-arrow{align-self:center;font-size:22px;color:var(--ink-3)}
+.ovt td,.ovt th{vertical-align:middle}
+.ovt .nm{font-weight:600}
+.ovt button.nm{all:unset;cursor:pointer;font-weight:600}
+.ovt button.nm:hover{text-decoration:underline}
+.ovt button.nm:focus-visible{outline:2px solid var(--accent)}
+.ovbar{display:flex;align-items:center;gap:10px;min-width:150px}
+.ovbar .pbar{flex:1}
+.ovt tr.h-bad td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
+.ovt tr.h-warn td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+.tag{display:inline-block;padding:0 8px;margin-right:6px;border-radius:4px;font-size:12px;font-weight:600;background:var(--line-2);color:var(--ink-2);vertical-align:1px}
+.wins{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:13.5px;color:var(--ink-2);margin-top:4px}
+@media (max-width:760px){.phases{grid-template-columns:1fr}.phase-arrow{display:none}}
+/* checker */
+.sec{margin-top:26px}
+.sec:first-child{margin-top:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:0}
+.stat{padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.stat dt{font-size:13px;color:var(--ink-2)}
+.stat dd{margin:2px 0 0;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.35}
+.stat dd small{display:block;font-size:12.5px;font-weight:400;color:var(--ink-2);line-height:1.5}
+.rules{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.rule{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line-2)}
+.rule:last-child{border-bottom:0}
+.rule .mark{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--surface);background:var(--c)}
+.rule .res{margin-left:auto;font-size:13.5px;font-weight:600;color:var(--c)}
+.issues{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.issue-h{padding:8px 16px;font-size:13.5px;font-weight:600;background:var(--surface-2);border-bottom:1px solid var(--line-2);color:var(--c)}
+.issue{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:12px;align-items:start;padding:10px 16px;border-bottom:1px solid var(--line-2)}
+.issue:last-child{border-bottom:0}
+.issue .dot{width:10px;height:10px;border-radius:50%;background:var(--c);margin-top:8px}
+.issue p{margin:0;overflow-wrap:anywhere}
+.issue p strong{font-weight:600}
+.issue p span{display:block;font-size:13.5px;color:var(--ink-2)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:9px 16px;text-align:left;border-bottom:1px solid var(--line-2);font-size:14px}
+th{font-weight:600;color:var(--ink-2);background:var(--surface-2);font-size:13px}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+/* modal + toast */
+.mb{position:fixed;inset:0;z-index:50;background:rgba(10,14,12,.5);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:max(20px,env(safe-area-inset-top,0px)) 14px max(20px,env(safe-area-inset-bottom,0px))}
+.modal{width:100%;max-width:560px;margin:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 22px 18px}
+.modal h2{margin:0 0 14px;font-size:20px}
+.fld{display:block;margin-bottom:14px}
+.fld>span{display:block;font-size:13.5px;font-weight:600;margin-bottom:4px}
+.fld input[type=text],.fld input[type=number],.fld input[type=date],.fld select,.fld textarea{width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.fld textarea{min-height:70px;resize:vertical}
+.hint{display:block;font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.no-name{display:grid;grid-template-columns:110px 1fr;gap:12px}
+.err{color:var(--bad);font-size:13.5px;min-height:1.6em;margin:0 0 6px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.acts .grow{margin-left:auto;display:flex;gap:10px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;max-width:calc(100vw - 32px);padding:10px 18px;border-radius:8px;background:var(--ink);color:var(--surface);font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.toast[hidden]{display:none}
+.banner{margin:0 0 16px;padding:10px 16px;border-radius:8px;border:1px solid color-mix(in srgb,var(--warn) 50%,var(--surface));background:color-mix(in srgb,var(--warn) 12%,var(--surface));font-size:14px}
+
+@media (max-width:900px){
+  .row{grid-template-columns:minmax(0,1fr) 230px 130px 64px}
+}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;align-items:start}
+  .title{font-size:25px}
+  .big{font-size:48px}
+  .verdict{margin-left:0}
+}
+@media (max-width:760px){
+  .row{grid-template-columns:minmax(0,1fr) auto}
+  .r-main{grid-column:1/-1}
+  .r-status{grid-column:1/-1}
+  .r-prog{grid-column:1}
+  .r-edit{grid-column:2}
+  .search{margin-left:0;width:100%}
+  .two{grid-template-columns:1fr}
+  .no-name{grid-template-columns:90px 1fr}
+  .pipe{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* viewer overrides */
+.tg-list{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.tg-row{display:grid;grid-template-columns:minmax(220px,290px) minmax(0,1fr);gap:10px 20px;padding:12px 16px;border-bottom:1px solid var(--line-2);align-items:start}
+.tg-row:last-child{border-bottom:0}
+.tg-head .r-name{font-weight:600}
+.tg-head .r-prog{margin-top:6px}
+.tg-chips{display:flex;flex-wrap:wrap;gap:5px;align-items:center;padding-top:2px}
+.tg-grp{font-size:11.5px;font-weight:700;color:var(--ink-3);margin:0 2px 0 8px}
+.tg-grp:first-child{margin-left:0}
+.tchip{display:inline-block;padding:2px 7px;border-radius:5px;font-size:12px;font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)}
+.tchip.dim{opacity:.2}
+.tg-pipe{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
+.stage.tg-st{border-top-width:6px}
+.tg-note{margin:10px 0 0;font-size:13px;color:var(--ink-3)}
+@media (max-width:760px){.tg-row{grid-template-columns:1fr}}
+.asof{margin:10px 0 0;font-size:16px;font-weight:600;color:var(--ink)}
+.row.vrow{grid-template-columns:minmax(0,1fr) 300px 170px}
+.vrow .r-name{cursor:default;display:block}
+.vrow .r-name:hover{text-decoration:none}
+.r-status .mini{display:inline-block;white-space:normal;line-height:1.5;padding:3px 12px}
+.tl-bar{cursor:default}
+.ovt td.nm{font-weight:600;white-space:nowrap}
+.namelist{margin:0;display:flex;flex-wrap:wrap;gap:4px 18px;color:var(--ink-2)}
+.link-btn[disabled]{opacity:.5;cursor:default;text-decoration:none}
+.badges{align-items:center}
+@media (max-width:900px){.row.vrow{grid-template-columns:minmax(0,1fr) 230px 140px}}
+@media (max-width:760px){.row.vrow{grid-template-columns:1fr}.row.vrow .r-status,.row.vrow .r-prog{grid-column:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="banner"></div>
+  <div id="app"></div>
+</div>
+<script type="application/json" id="status-data">{"stamp":"2026-11-05T11:10:44+07:00","source":"Google Sheet: สถานะ รงปจป 2569","draft":[{"no":1,"name":"มั่นคง","unit":"","owner":"พี่ป่อง","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":2,"name":"ต่างประเทศ","unit":"","owner":"พี่พะแพรว","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":"ผ่านหัวหน้าทีมและลงไดร์ฟแล้ว จำนวน 6 เป้าหมาย Y2 - 1 เป้าหมาย 020001 Y1 - 5 เป้าหมาย 020201 020202 020301 020401 020501"},{"no":3,"name":"เกษตร","unit":"","owner":"แอม","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":4,"name":"อุตสาหกรรม","unit":"","owner":"ภูริ","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":5,"name":"ท่องเที่ยว","unit":"","owner":"พี่เกิด","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":"ผ่านหัวหน้าทีมและลงไดร์ฟแล้ว จำนวน 17 เป้าหมาย Y2 = 3 เป้าหมาย 050001 050002 050003 Y1 = 14 เป้าหมาย 050101 050102 050103 050201 050202 050301 0530302 050303 050401 050402 050501 050601 050602 050603"},{"no":6,"name":"เมือง","unit":"","owner":"ฝ้าย","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":7,"name":"โครงสร้างพื้นฐาน","unit":"","owner":"หมีพูห์","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":"ผ่านหัวหน้าทีมและลงไดร์ฟแล้ว จำนวน 11 เป้าหมาย Y2 : 1 เป้าหมาย 070001 Y1 : 10 เป้าหมาย 070101 070102 070103 070104 070105 070201 070202 070203 070204 070301"},{"no":8,"name":"SMEs","unit":"","owner":"ชายน์","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":9,"name":"เขตเศรษฐกิจพิเศษ","unit":"","owner":"พี่แหวน","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":10,"name":"ค่านิยม","unit":"","owner":"มะปราง","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":11,"name":"พัฒนาคน","unit":"","owner":"แบม","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":12,"name":"การเรียนรู้","unit":"","owner":"พี่โบว์","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":"ผ่านหัวหน้าทีมและลงไดร์ฟแล้ว จำนวน 4 เป้าหมาย Y2 : 2 เป้าหมาย 120001 120002 Y1 : 2 เป้าหมาย 120101 120201"},{"no":13,"name":"สุขภาวะ","unit":"","owner":"ลิลลี่","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":14,"name":"กีฬา","unit":"","owner":"พี่แฟง","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":15,"name":"พลังสังคม","unit":"","owner":"พี่ปั๊บ","status":"หัวหน้าทีมตรวจ","note":""},{"no":16,"name":"เศรษฐกิจฐานราก","unit":"","owner":"บูลล์","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":17,"name":"เหลื่อมล้ำ","unit":"","owner":"น้ำหนาว","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":18,"name":"ยั่งยืน","unit":"","owner":"เจน","status":"ปรับ/แก้ไขตามหัวหน้าทีม","note":"ปรับแก้ไขตาม cm. หัวหน้าทีม จำนวน 9 เป้าหมาย Y2 จำนวน 1 เป้าหมาย คือ 180001 Y1 จำนวน 8 เป้าหมาย คือ 180101 180102 180201 180301 180401 180402 180403 180501"},{"no":19,"name":"น้ำ","unit":"","owner":"จูน","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":20,"name":"ภาครัฐ","unit":"","owner":"พี่หมี","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":21,"name":"ปปช.","unit":"","owner":"นิ้ง","status":"อยู่ระหว่างดำเนินการ","note":""},{"no":22,"name":"กฎหมาย","unit":"","owner":"ปรายฟ้า","status":"ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว","note":""},{"no":23,"name":"วิจัย","unit":"","owner":"ลูกปัด","status":"อยู่ระหว่างดำเนินการ","note":""}],"proc":[{"no":1,"name":"มั่นคง","unit":"กมค./กปร.","owner":"พี่ป่อง","status":"","note":""},{"no":2,"name":"ต่างประเทศ","unit":"กปร.","owner":"พี่พะแพรว","status":"","note":""},{"no":3,"name":"เกษตร","unit":"กพข.","owner":"แอม","status":"","note":""},{"no":4,"name":"อุตสาหกรรม","unit":"กพข.","owner":"พี่ปัญ","status":"","note":""},{"no":5,"name":"ท่องเที่ยว","unit":"กพข.","owner":"พี่เกิด","status":"","note":""},{"no":6,"name":"เมือง","unit":"กพม.","owner":"ฝ้าย","status":"","note":""},{"no":7,"name":"โครงสร้างพื้นฐาน","unit":"กคพ. และ กลจ.","owner":"หมีพูห์","status":"","note":""},{"no":8,"name":"SMEs","unit":"กพข.","owner":"ชายน์","status":"","note":""},{"no":9,"name":"เขตเศรษฐกิจพิเศษ","unit":"กพท.","owner":"พี่แหวน","status":"","note":""},{"no":10,"name":"ค่านิยม","unit":"กมส.","owner":"มะปราง","status":"","note":""},{"no":11,"name":"พัฒนาคน","unit":"กมส.","owner":"แบม","status":"","note":""},{"no":12,"name":"การเรียนรู้","unit":"กมส.","owner":"พี่โบว์","status":"","note":""},{"no":13,"name":"สุขภาวะ","unit":"กมส.","owner":"ลิลลี่","status":"","note":""},{"no":14,"name":"กีฬา","unit":"กพข. และ กมส.","owner":"พี่แฟง","status":"","note":""},{"no":15,"name":"พลังสังคม","unit":"กสท.","owner":"พี่ปั๊บ","status":"","note":""},{"no":16,"name":"เศรษฐกิจฐานราก","unit":"กขส.","owner":"บูลล์","status":"","note":""},{"no":17,"name":"เหลื่อมล้ำ","unit":"กขส.","owner":"น้ำหนาว","status":"","note":""},{"no":18,"name":"ยั่งยืน","unit":"กทว.","owner":"เจน","status":"","note":""},{"no":19,"name":"น้ำ","unit":"กทว.","owner":"จูน","status":"","note":""},{"no":20,"name":"ภาครัฐ","unit":"กยป.","owner":"พี่หมี","status":"","note":""},{"no":21,"name":"ปปช.","unit":"กยป.","owner":"นิ้ง","status":"","note":""},{"no":22,"name":"กฎหมาย","unit":"กยป.","owner":"ปรายฟ้า","status":"หัวหน้าทีมตรวจ","note":""},{"no":23,"name":"วิจัย","unit":"กพข.","owner":"ลูกปัด","status":"","note":""}],"plan":[{"task":"การขอข้อมูลประกอบการจัดทำรายงานประจำปี","parent":"","status":"กำลังทำ","start":"2026-10-01","due":"2026-11-30","completed":"","detail":"ต.ค.–พ.ย. 69"},{"task":"กยป. ยกร่าง ส. เพื่อดำเนินการขอข้อมูลจากหน่วยงาน","parent":"RA1","status":"กำลังทำ","start":"2026-10-01","due":"2026-11-30","completed":"","detail":""},{"task":"กยป. ยกร่าง template รายงานประจำปี","parent":"RA1","status":"เสร็จแล้ว","start":"2026-10-01","due":"2026-11-30","completed":"2026-10-21","detail":""},{"task":"กยป. ยกร่างบันทึกข้อความนำเรียนผู้บริหารสายงาน เพื่อขอความอนุเคราะห์กองดำเนินการจัดทำรายงานประจำปี","parent":"RA1","status":"กำลังทำ","start":"2026-10-01","due":"2026-11-30","completed":"","detail":""},{"task":"กระบวนการจัดทำรายงานประจำปี","parent":"","status":"รอเริ่ม","start":"2026-11-01","due":"2027-03-31","completed":"","detail":"พ.ย. 69 – มี.ค. 70"},{"task":"กองดำเนินการจัดทำรายงานประจำปี","parent":"RA2","status":"รอเริ่ม","start":"2026-11-01","due":"2026-11-30","completed":"","detail":"ช่วง พ.ย. 69 ตามแผน"},{"task":"Layout กับทางโรงพิมพ์ในส่วนของหน้าปก + template","parent":"RA2","status":"รอเริ่ม","start":"2026-11-01","due":"2026-11-30","completed":"","detail":"ช่วง พ.ย. 69 ตามแผน"},{"task":"กยป. ตรวจสอบความถูกต้องของเนื้อหาของแผนแม่บทฯ + ยกร่างเนื้อหามิติยุทธทั้ง 6 ด้าน","parent":"RA2","status":"รอเริ่ม","start":"2026-11-01","due":"2026-11-30","completed":"","detail":"ช่วง พ.ย. 69 ตามแผน"},{"task":"เสนอ (ร่าง) รายงานประจำปีต่อผู้บริหารสายงานพิจารณา","parent":"RA2","status":"รอเริ่ม","start":"2026-11-01","due":"2026-12-31","completed":"","detail":"พ.ย.–ธ.ค. 69"},{"task":"Layout กับทางโรงพิมพ์ในส่วนของเนื้อหา","parent":"RA2","status":"รอเริ่ม","start":"2026-12-01","due":"2027-01-31","completed":"","detail":"ธ.ค. 69 – ม.ค. 70"},{"task":"กยป. ยกร่างชุดเอกสารเพื่อขออนุมัติจัดพิมพ์รายงานประจำปี","parent":"RA2","status":"รอเริ่ม","start":"2027-02-01","due":"2027-02-28","completed":"","detail":"ก.พ. 70"},{"task":"จัดพิมพ์รูปเล่ม (ร่าง) รายงานประจำปี 2569","parent":"RA2","status":"รอเริ่ม","start":"2027-03-01","due":"2027-03-31","completed":"","detail":"มี.ค. 70"},{"task":"กระบวนการเสนอรายงานประจำปี","parent":"","status":"รอเริ่ม","start":"2027-01-01","due":"2027-01-31","completed":"","detail":"ม.ค. 70 (กระบวนการนำเสนอ)"},{"task":"กยป. ยกร่างหนังสือเพื่อเสนอ (ร่าง) รายงานประจำปี 2569 ต่อ นรม. เพื่อพิจารณาเห็นชอบ","parent":"RA3","status":"รอเริ่ม","start":"2027-01-01","due":"2027-01-31","completed":"","detail":""},{"task":"กยป. เผยแพร่ (ร่าง) รายงานประจำปี 2569 ผ่านช่องทางออนไลน์ และยกร่างหนังสือเพื่อแจ้งการเผยแพร่ต่อ คกก.ยช.","parent":"RA3","status":"รอเริ่ม","start":"2027-01-01","due":"2027-01-28","completed":"","detail":"เผยแพร่ต่อสาธารณชนภายใน 28 ม.ค. 70"},{"task":"กยป. ยกร่างหนังสือเพื่อเสนอ (ร่าง) รายงานประจำปี 2569 ต่อ ครม. เพื่อพิจารณารับทราบ","parent":"RA3","status":"รอเริ่ม","start":"2027-01-01","due":"2027-01-31","completed":"","detail":"แผนไม่ระบุช่วงเวลาชัดเจน"}],"targets":{"legend":[{"k":"D","label":"กยป. ยกร่าง template","color":"#CC0000","group":"Y2"},{"k":"E","label":"หัวหน้าทีมตรวจtemplate","color":"#BF9000","group":"Y2"},{"k":"F","label":"แก้ไขตามcm.หัวหน้าทีม","color":"#FFFF00","group":"Y2"},{"k":"G","label":"ผ่าน+นำส่งไดร์ฟ+แจ้งกองเรียบร้อยแล้ว","color":"#9DFF00","group":"Y2"},{"k":"H","label":"กองอยู่ระหว่างดำเนินการ","color":"#D796F2","group":"Y1"},{"k":"I","label":"กองส่งกลับมายัง กยป.","color":"#0000FF","group":"Y1"},{"k":"J","label":"กยป. ตรวจสอบความถูกต้อง","color":"#FF97B9","group":"Y1"},{"k":"K","label":"เสนอหัวหน้าตรวจร่างรายงาน","color":"#E6F45C","group":"Y1"},{"k":"L","label":"เสนอ ผอ. ตรวจร่างรายงาน","color":"#FF1E57","group":"Y1"},{"k":"M","label":"เสนอ รศช. สายงาน พิจารณา","color":"#A3C2E0","group":"Y1"},{"k":"N","label":"รศช. สายงาน มีความเห็น ให้แก้ไข","color":"#FF9439","group":"Y1"},{"k":"O","label":"ผ่าน รศช. แล้วอยู่ระหว่าง ผอ.กยป. ตรวจสอบความถูกต้อง","color":"#00FFFF","group":"Y1"},{"k":"P","label":"ผ่านการพิจารณาแล้ว + นำส่งโรงพิมพ์","color":"#AEE35B","group":"Y1"},{"k":"Q","label":"อยู่ระหว่าง lay out","color":"#D98F70","group":"Y1"},{"k":"R","label":"เจ้าของเล่มตรวจฉบับ layout จากโรงพิมพ์","color":"#F2E763","group":"Y1"},{"k":"S","label":"โรงพิมพ์ปรับแก้ไข","color":"#D09BD9","group":"Y1"},{"k":"T","label":"Final ร่างรายงาน","color":"#00FF00","group":"Y1"}],"plans":[{"no":1,"name":"ความมั่นคง","owner":"พี่ป่อง","unit":"กมค./กปร.","y2":[{"code":"010001","stage":""},{"code":"010002","stage":""}],"y1":[{"code":"010101","stage":""},{"code":"010102","stage":""},{"code":"010103","stage":""},{"code":"010201","stage":""},{"code":"010202","stage":""},{"code":"010301","stage":""},{"code":"010302","stage":""},{"code":"010401","stage":""},{"code":"010402","stage":""},{"code":"010501","stage":""}]},{"no":2,"name":"การต่างประเทศ","owner":"พี่พะแพรว","unit":"กปร.","y2":[{"code":"020001","stage":""}],"y1":[{"code":"020201","stage":""},{"code":"020202","stage":""},{"code":"020301","stage":""},{"code":"020401","stage":""},{"code":"020501","stage":""}]},{"no":3,"name":"การเกษตร","owner":"แอม","unit":"กพข.","y2":[{"code":"030001","stage":""},{"code":"030002","stage":""}],"y1":[{"code":"030101","stage":""},{"code":"030201","stage":""},{"code":"030202","stage":""},{"code":"030301","stage":""},{"code":"030302","stage":""},{"code":"030401","stage":""},{"code":"030501","stage":""},{"code":"030502","stage":""},{"code":"030601","stage":""},{"code":"030602","stage":""}]},{"no":4,"name":"อุตสาหกรรมและบริการแห่งอนาคต","owner":"ภูริ","unit":"กพข.","y2":[{"code":"040001","stage":""},{"code":"040002","stage":""}],"y1":[{"code":"040101","stage":""},{"code":"040201","stage":""},{"code":"040301","stage":""},{"code":"040302","stage":""},{"code":"040401","stage":""},{"code":"040403","stage":""},{"code":"040501","stage":""},{"code":"040502","stage":""},{"code":"040601","stage":""},{"code":"040602","stage":""}]},{"no":5,"name":"การท่องเที่ยว","owner":"พี่เกิด","unit":"กพข.","y2":[{"code":"050001","stage":""},{"code":"050002","stage":""},{"code":"050003","stage":""}],"y1":[{"code":"050101","stage":""},{"code":"050102","stage":""},{"code":"050103","stage":""},{"code":"050201","stage":""},{"code":"050202","stage":""},{"code":"050301","stage":""},{"code":"050302","stage":""},{"code":"050303","stage":""},{"code":"050401","stage":""},{"code":"050402","stage":""},{"code":"050501","stage":""},{"code":"050601","stage":""},{"code":"050602","stage":""},{"code":"050603","stage":""}]},{"no":6,"name":"พื้นที่และเมืองน่าอยู่อัจฉริยะ","owner":"ฝ้าย","unit":"กพม.","y2":[{"code":"060001","stage":""},{"code":"060002","stage":""},{"code":"060003","stage":""}],"y1":[{"code":"060101","stage":""},{"code":"060201","stage":""},{"code":"060202","stage":""}]},{"no":7,"name":"โครงสร้างพื้นฐาน ระบบโลจิสติกส์ และดิจิทัล","owner":"หมีพูห์","unit":"กคพ. และ กลจ.","y2":[{"code":"070001","stage":""}],"y1":[{"code":"070101","stage":""},{"code":"070102","stage":""},{"code":"070103","stage":""},{"code":"070104","stage":""},{"code":"070105","stage":""},{"code":"070201","stage":""},{"code":"070202","stage":""},{"code":"070203","stage":""},{"code":"070204","stage":""},{"code":"070301","stage":""}]},{"no":8,"name":"ผู้ประกอบการและวิสาหกิจขนาดกลางและขนาดย่อมยุคใหม่","owner":"ชายน์","unit":"กพข.","y2":[{"code":"080001","stage":""}],"y1":[{"code":"080101","stage":""},{"code":"080102","stage":""},{"code":"080201","stage":""},{"code":"080202","stage":""},{"code":"080301","stage":""},{"code":"080302","stage":""},{"code":"080303","stage":""},{"code":"080401","stage":""}]},{"no":9,"name":"เขตเศรษฐกิจพิเศษ","owner":"พี่แหวน","unit":"กพท.","y2":[{"code":"090001","stage":""},{"code":"090002","stage":""}],"y1":[{"code":"090101","stage":""},{"code":"090102","stage":""},{"code":"090204","stage":""},{"code":"090205","stage":""},{"code":"090301","stage":""},{"code":"090302","stage":""}]},{"no":10,"name":"การปรับเปลี่ยนค่านิยมและวัฒนธรรม","owner":"มะปราง","unit":"กมส.","y2":[{"code":"100001","stage":""}],"y1":[{"code":"100101","stage":""},{"code":"100201","stage":""},{"code":"100301","stage":""}]},{"no":11,"name":"การพัฒนาศักยภาพคนตลอดช่วงชีวิต","owner":"แบม","unit":"กมส.","y2":[{"code":"110001","stage":""}],"y1":[{"code":"110101","stage":""},{"code":"110201","stage":""},{"code":"110301","stage":""},{"code":"110401","stage":""},{"code":"110402","stage":""},{"code":"110501","stage":""}]},{"no":12,"name":"การพัฒนาการเรียนรู้","owner":"พี่โบว์","unit":"กมส.","y2":[{"code":"120001","stage":""},{"code":"120002","stage":""}],"y1":[{"code":"120101","stage":""},{"code":"120201","stage":""}]},{"no":13,"name":"การเสริมสร้างให้คนไทย มีสุขภาวะที่ดี","owner":"ลิลลี่","unit":"กมส.","y2":[{"code":"130001","stage":""}],"y1":[{"code":"130101","stage":""},{"code":"130201","stage":""},{"code":"130301","stage":""},{"code":"130401","stage":""},{"code":"130501","stage":""}]},{"no":14,"name":"ศักยภาพการกีฬา","owner":"พี่แฟง","unit":"กพข. และ กมส.","y2":[{"code":"140001","stage":""}],"y1":[{"code":"140101","stage":""},{"code":"140201","stage":""},{"code":"140301","stage":""}]},{"no":15,"name":"พลังทางสังคม","owner":"พี่ปั๊บ","unit":"กสท.","y2":[{"code":"150001","stage":""}],"y1":[{"code":"150101","stage":""},{"code":"150201","stage":""},{"code":"150202","stage":""}]},{"no":16,"name":"เศรษฐกิจฐานราก","owner":"บูลล์","unit":"กขส.","y2":[{"code":"160001","stage":""}],"y1":[{"code":"160101","stage":""},{"code":"160201","stage":""},{"code":"160202","stage":""}]},{"no":17,"name":"ความเสมอภาคและหลักประกันทางสังคม","owner":"น้ำหนาว","unit":"กขส.","y2":[{"code":"170001","stage":""}],"y1":[{"code":"170101","stage":""},{"code":"170201","stage":""}]},{"no":18,"name":"การเติบโตอย่างยั่งยืน","owner":"เจน","unit":"กทว.","y2":[{"code":"180001","stage":""}],"y1":[{"code":"180101","stage":""},{"code":"180102","stage":""},{"code":"180201","stage":""},{"code":"180301","stage":""},{"code":"180401","stage":""},{"code":"180402","stage":""},{"code":"180403","stage":""},{"code":"180501","stage":""}]},{"no":19,"name":"การบริหารจัดการน้ำทั้งระบบ","owner":"จูน","unit":"กทว.","y2":[{"code":"190001","stage":""},{"code":"190002","stage":""},{"code":"190003","stage":""}],"y1":[{"code":"190101","stage":""},{"code":"190102","stage":""},{"code":"190103","stage":""},{"code":"190201","stage":""},{"code":"190202","stage":""},{"code":"190301","stage":""}]},{"no":20,"name":"การบริการประชาชนและ ประสิทธิภาพภาครัฐ","owner":"พี่หมี","unit":"กยป.","y2":[{"code":"200001","stage":""},{"code":"200002","stage":""}],"y1":[{"code":"200101","stage":""},{"code":"200201","stage":""},{"code":"200202","stage":""},{"code":"200203","stage":""},{"code":"200301","stage":""},{"code":"200302","stage":""},{"code":"200401","stage":""},{"code":"200501","stage":""}]},{"no":21,"name":"การต่อต้านการทุจริตและ ประพฤติมิชอบ","owner":"นิ้ง","unit":"กยป.","y2":[{"code":"210001","stage":""}],"y1":[{"code":"210101","stage":""},{"code":"210102","stage":""},{"code":"210201","stage":""}]},{"no":22,"name":"กฎหมายและกระบวนการยุติธรรม","owner":"ปรายฟ้า","unit":"กยป.","y2":[{"code":"220001","stage":"?","color":"#EDC35B"},{"code":"220002","stage":"?","color":"#EDC35B"}],"y1":[{"code":"220101","stage":""},{"code":"220102","stage":"?","color":"#EDC35B"},{"code":"220103","stage":"?","color":"#EDC35B"},{"code":"220104","stage":""},{"code":"220201","stage":""}]},{"no":23,"name":"การวิจัยและพัฒนานวัตกรรม","owner":"ลูกปัด","unit":"กพข.","y2":[{"code":"230001","stage":""},{"code":"230002","stage":""}],"y1":[{"code":"230101","stage":""},{"code":"230102","stage":""},{"code":"230201","stage":""},{"code":"230301","stage":""},{"code":"230401","stage":""},{"code":"230501","stage":""},{"code":"230502","stage":""}]}]}}</script>
+<script>
+/* =====================================================================
+   ตั้งค่า (ข้อมูลสถานะอยู่ในส่วน status-data ท้ายไฟล์)
+   ===================================================================== */
+var CONFIG={
+  TITLE:'สถานะร่าง รายงานประจำปี 2569',
+  /* ช่วงเวลาของแต่ละขั้น (ปี ค.ศ. YYYY-MM-DD) ใช้เทียบความคืบหน้ากับแผน เว้นว่างได้ */
+  WINDOWS:{
+    draft:{start:'2026-10-21',end:'2026-11-13'},
+    proc:{start:'2026-11-16',end:'2026-12-23'}
+  }
+};
+/* ===================================================================== */
+
+(function(){
+'use strict';
+
+var PH={
+  draft:{key:'draft',name:'ยกร่าง template',short:'ยกร่าง',step:1,final:'d4',
+    stages:[
+      {k:'d0',label:'ยังไม่รายงานสถานะ',cls:'none'},
+      {k:'d1',label:'อยู่ระหว่างดำเนินการ',cls:'work'},
+      {k:'d2',label:'หัวหน้าทีมตรวจ',cls:'check'},
+      {k:'d3',label:'ปรับ/แก้ไขตามหัวหน้าทีม',cls:'rework'},
+      {k:'d4',label:'ผ่านและนำส่งไดร์ฟเรียบร้อยแล้ว',cls:'final'}
+    ]},
+  proc:{key:'proc',name:'สถานะดำเนินการ',short:'ดำเนินการ',step:2,final:'s9',
+    stages:[
+      {k:'s0',label:'ยังไม่รายงานสถานะ',cls:'none'},
+      {k:'s1',label:'กองอยู่ระหว่างดำเนินการ',cls:'work'},
+      {k:'s2',label:'เจ้าของเล่มตรวจ',cls:'check'},
+      {k:'s3',label:'เจ้าของเล่มปรับ/แก้ไข',cls:'rework'},
+      {k:'s4',label:'หัวหน้าทีมตรวจ',cls:'check'},
+      {k:'s5',label:'ปรับแก้ตามหัวหน้าทีม',cls:'rework'},
+      {k:'s6',label:'ผอ.กยป. ตรวจ',cls:'check'},
+      {k:'s7',label:'ปรับแก้ตาม ผอ.กยป.',cls:'rework'},
+      {k:'s8',label:'ผ่าน ผอ.กยป. และนำส่งรองสายงานฯ พิจารณา',cls:'pass'},
+      {k:'s9',label:'ผ่านรองสายงานฯ',cls:'final'}
+    ]}
+};
+var PHL=[PH.draft,PH.proc];
+function nz(x){ return String(x==null?'':x).replace(/\s+/g,' ').trim(); }
+PHL.forEach(function(p){
+  p.map={}; p.byLabel={}; p.steps=p.stages.length-1;
+  p.stages.forEach(function(s,i){ s.idx=i; s.pct=Math.round(i/p.steps*100); p.map[s.k]=s; p.byLabel[nz(s.label)]=s; });
+});
+var TOTAL=PH.draft.steps+PH.proc.steps;
+var CLASSES=[['none','ยังไม่รายงาน'],['work','กำลังดำเนินการ'],['check','ตรวจ'],['rework','ปรับแก้'],['pass','ผ่าน ผอ.กยป.'],['final','ผ่านขั้นสุดท้าย']];
+var BUCKETS=[['notstart','ยังไม่เริ่ม','none'],['draft','อยู่ในขั้นยกร่าง','work'],['ready','ผ่านยกร่าง รอขั้นดำเนินการ','pass'],['proc','อยู่ในขั้นดำเนินการ','check'],['done','ผ่านครบทุกขั้น','final']];
+var DAY=86400000, LABELW=210, SEVRANK={bad:3,warn:2,info:1};
+
+var S={tasks:[],plan:[],sheetStamp:'',loadedAt:null,loading:false,error:null,planError:false,
+  tab:'overview',filter:{draft:'all',proc:'all',ov:'all',tg:'all'},q:'',zoom:'week',tlScrolled:false,show:{plan:true,draft:true,proc:true}};
+
+/* ---------- helpers ---------- */
+function $(s,r){return (r||document).querySelector(s);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function clamp(n,a,b){return Math.max(a,Math.min(b,n));}
+function pd(s){ if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return null; var p=s.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }
+function diff(a,b){ return Math.round((b-a)/DAY); }
+function addDays(d,n){ return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n); }
+function today(){ var n=S.snapshot||new Date(); return new Date(n.getFullYear(),n.getMonth(),n.getDate()); }
+function fmtD(d){ return d.toLocaleDateString('th-TH',{day:'numeric',month:'short'}); }
+function fmtDY(d){ return d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'}); }
+function fmtT(d){ return d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}); }
+function dn(t){ return (t.no!=null?t.no+'. ':'')+t.name; }
+function st(t,ph){ return ph===PH.draft?t.ds:t.ps; }
+function ownerOf(t,ph){ return ph===PH.draft?(t.downer||t.owner):(t.owner||t.downer); }
+function win(ph){ var w=CONFIG.WINDOWS[ph.key]||{}, s=pd(w.start), e=pd(w.end); return (s&&e&&e>=s)?{s:s,e:e}:null; }
+function expectedFor(w,td){ return clamp(diff(w.s,td)/(diff(w.s,w.e)+1)*100,0,100); }
+function chip(s){ return '<span class="mini st-'+s.cls+'">'+esc(s.label)+'</span>'; }
+function sorted(list){
+  return list.slice().sort(function(a,b){
+    var an=a.no!=null, bn=b.no!=null;
+    if(an&&bn&&a.no!==b.no) return a.no-b.no;
+    if(an!==bn) return an?-1:1;
+    return a.name.localeCompare(b.name,'th');
+  });
+}
+function bucket(t){
+  if(t.ps.k===PH.proc.final) return 'done';
+  if(t.ps.idx>0) return 'proc';
+  if(t.ds.k===PH.draft.final) return 'ready';
+  if(t.ds.idx>0) return 'draft';
+  return 'notstart';
+}
+
+/* ---------- data ---------- */
+function stageOf(ph,label){
+  var l=nz(label);
+  if(!l) return {stage:ph.stages[0],unknown:''};
+  var s=ph.byLabel[l];
+  return s?{stage:s,unknown:''}:{stage:ph.stages[0],unknown:l};
+}
+function merge(draft,proc){
+  var key=function(x){ return x.no!=null?'n'+x.no:'t'+x.name; }, map={}, order=[];
+  proc.forEach(function(p){ var k=key(p); if(!map[k]){ map[k]={no:p.no,name:p.name}; order.push(k); } map[k].p=p; });
+  draft.forEach(function(d){ var k=key(d); if(!map[k]){ map[k]={no:d.no,name:d.name}; order.push(k); } map[k].d=d; });
+  return order.map(function(k){
+    var m=map[k], d=m.d||{}, p=m.p||{};
+    var a=stageOf(PH.draft,d.status), b=stageOf(PH.proc,p.status);
+    var owner=p.owner||d.owner||'', downer=(d.owner&&d.owner!==owner)?d.owner:'';
+    var t={id:k,no:m.no,name:m.name,owner:owner,downer:downer,unit:p.unit||'',note:p.note||d.note||'',
+      ds:a.stage,ps:b.stage,unknown:{draft:a.unknown,proc:b.unknown},inDraft:!!m.d,inProc:!!m.p};
+    t.overall=Math.round((t.ds.idx+t.ps.idx)/TOTAL*100);
+    return t;
+  });
+}
+function loadEmbedded(){
+  try{
+    var D=JSON.parse(document.getElementById('status-data').textContent);
+    S.tasks=merge(D.draft||[],D.proc||[]);
+    S.tg=prepTargets(D.targets);
+    S.snapshot=D.stamp?new Date(D.stamp):null;
+    S.plan=(D.plan||[]).map(function(x,i){return {order:i,label:x.task||'',top:!x.parent,status:x.status||'',es:x.start||'',ee:x.due||'',detail:x.detail||'',completed:x.completed||''};});
+  }catch(e){ S.error='อ่านข้อมูลสถานะในไฟล์ไม่ได้'; }
+}
+
+/* ---------- analysis ---------- */
+function verdictOf(a,e){
+  if(a==null) return null;
+  if(a>=99.5) return {t:'ผ่านครบทุกประเด็นแล้ว',s:'ok'};
+  if(e==null) return {t:'ยังเทียบกับแผนไม่ได้',s:'info'};
+  if(e<1) return {t:a>0?'เริ่มก่อนแผน':'ยังไม่ถึงกำหนดเริ่ม',s:'ok'};
+  var spi=a/e, g=Math.round(e-a);
+  if(spi>=1.05) return {t:'เร็วกว่าแผน '+Math.abs(g)+' จุด',s:'ok'};
+  if(spi>=0.95) return {t:'ตามแผน',s:'ok'};
+  if(spi>=0.8) return {t:'เสี่ยงช้ากว่าแผน '+g+' จุด',s:'warn'};
+  return {t:'ช้ากว่าแผน '+g+' จุด',s:'bad'};
+}
+function forecastOf(a,s,e,td){
+  if(!s||!e||a==null||a<5||a>=99.5||td<=s) return null;
+  var total=diff(s,td)/(a/100);
+  if(!isFinite(total)||total>diff(s,e)*6+60) return null;
+  var proj=addDays(s,Math.round(total));
+  return {date:proj,late:diff(e,proj),planned:e};
+}
+function analyze(tasks){
+  var td=today(), R={byTask:{},issues:[],phase:{},overall:null};
+  tasks.forEach(function(t){ R.byTask[t.id]={issues:[],health:{draft:'ok',proc:'ok'},worst:'ok'}; });
+  function add(t,ph,sev,code,msg){ var o={taskId:t.id,name:dn(t),phase:ph,sev:sev,code:code,msg:msg}; R.issues.push(o); R.byTask[t.id].issues.push(o); }
+  PHL.forEach(function(ph){
+    var w=win(ph), ex=w?expectedFor(w,td):null, sum=0, fin=0, nost=0;
+    tasks.forEach(function(t){
+      var s=st(t,ph), p=s.pct, isFin=(s.k===ph.final), draftDone=(t.ds.k===PH.draft.final);
+      sum+=p; if(isFin)fin++; if(s.idx===0)nost++;
+      if(t.unknown[ph.key]) add(t,ph.key,'warn','unknown','สถานะในชีต “'+t.unknown[ph.key]+'” ไม่ตรงกับรายการสถานะ จึงนับเป็นยังไม่รายงาน');
+      if(ph===PH.draft && !isFin && s.idx===0 && !t.unknown.draft) add(t,'draft','info','nostatus','ยังไม่รายงานสถานะขั้นยกร่าง template');
+      if(ph===PH.proc && draftDone && s.idx===0) add(t,'proc','info','waitproc','ผ่านยกร่างแล้ว แต่ยังไม่เริ่มขั้นดำเนินการ');
+      if(w && !isFin){
+        var left=diff(td,w.e), timing=(ph===PH.draft)||draftDone;
+        if(td>w.e) add(t,ph.key,'bad','overdue','เลยกำหนดขั้น'+ph.short+' '+diff(w.e,td)+' วัน (ครบกำหนด '+fmtD(w.e)+') ตอนนี้อยู่ขั้น “'+s.label+'”');
+        else if(timing){
+          if(s.idx===0 && td>w.s) add(t,ph.key,'warn','latestart','ยังไม่เริ่มขั้น'+ph.short+' เลยวันเริ่มมา '+diff(w.s,td)+' วัน');
+          else if(s.idx>0 && ex-p>=15){ var g=Math.round(ex-p); add(t,ph.key,g>=30?'bad':'warn','behind','ขั้น'+ph.short+'ช้ากว่าแผน '+g+' จุด (ควรถึง '+Math.round(ex)+'% แต่อยู่ขั้น “'+s.label+'” '+p+'%)'); }
+          else if(left<=3 && td>=w.s && p<70) add(t,ph.key,'warn','near','ครบกำหนดขั้น'+ph.short+'ใน '+left+' วัน แต่ยังอยู่ขั้น “'+s.label+'”');
+        }
+      }
+    });
+    var n=tasks.length, a=n?sum/n:null;
+    R.phase[ph.key]={actual:a,expected:ex,win:w,fin:fin,nost:nost,n:n,verdict:verdictOf(a,ex),forecast:w?forecastOf(a,w.s,w.e,td):null};
+  });
+  tasks.forEach(function(t){
+    if(t.ps.idx>0 && t.ds.k!==PH.draft.final) add(t,'proc','warn','seq','เริ่มขั้นดำเนินการแล้ว แต่ขั้นยกร่าง template ยังไม่ผ่าน (อยู่ขั้น “'+t.ds.label+'”)');
+  });
+  tasks.forEach(function(t){
+    var b=R.byTask[t.id];
+    PHL.forEach(function(ph){
+      var iss=b.issues.filter(function(i){return i.phase===ph.key;});
+      b.health[ph.key]=st(t,ph).k===ph.final?'done':(iss.some(function(i){return i.sev==='bad';})?'bad':(iss.some(function(i){return i.sev==='warn';})?'warn':'ok'));
+    });
+    b.worst=(b.health.draft==='bad'||b.health.proc==='bad')?'bad':((b.health.draft==='warn'||b.health.proc==='warn')?'warn':(t.ps.k===PH.proc.final?'done':'ok'));
+    b.issues.sort(function(x,y){return SEVRANK[y.sev]-SEVRANK[x.sev];});
+  });
+  var n=tasks.length, a=n?tasks.reduce(function(x,t){return x+t.overall;},0)/n:null;
+  var wd=win(PH.draft), wp=win(PH.proc), e=null, fc=null;
+  if(wd&&wp){
+    e=(expectedFor(wd,td)/100*PH.draft.steps+expectedFor(wp,td)/100*PH.proc.steps)/TOTAL*100;
+    fc=forecastOf(a,wd.s<wp.s?wd.s:wp.s,wd.e>wp.e?wd.e:wp.e,td);
+  }
+  R.overall={actual:a,expected:e,verdict:verdictOf(a,e),forecast:fc};
+  return R;
+}
+function missingWindows(){ return PHL.filter(function(ph){return !win(ph);}); }
+function flaggedCount(a){ return a.issues.filter(function(i){return i.sev!=='info';}).length; }
+
+/* ---------- render ---------- */
+function render(){
+  var app=$('#app');
+  var keep=null, act=document.activeElement;
+  if(act&&act.id==='q') keep={s:act.selectionStart,e:act.selectionEnd};
+  var tl=$('.tl-scroll',app), sl=tl?tl.scrollLeft:null;
+  app.style.minHeight=app.offsetHeight+'px';
+  var a=analyze(S.tasks);
+  $('#banner').innerHTML=S.error?'<div class="banner">'+esc(S.error)+'</div>':'';
+  app.innerHTML=heroHTML(a)+tabsHTML(a)+'<div id="panel">'+panelHTML(a)+'</div>';
+  app.style.minHeight='';
+  if(keep){ var q=$('#q'); if(q){ q.focus(); try{q.setSelectionRange(keep.s,keep.e);}catch(e){} } }
+  if(S.tab==='timeline'){
+    var sc=$('.tl-scroll',app);
+    if(sc){
+      if(sl!=null&&S.tlScrolled) sc.scrollLeft=sl;
+      else { var tx=sc.getAttribute('data-todayx'); if(tx!=null) sc.scrollLeft=Math.max(0,Number(tx)-sc.clientWidth/3); S.tlScrolled=true; }
+    }
+  }
+}
+function scopeOf(a){
+  if(S.tab==='targets'){
+    var G=tgStats();
+    return {actual:G?G.avg:null,expected:null,verdict:null,forecast:null,label:'ความคืบหน้าเฉลี่ยรายเป้า ('+(G?G.n:0)+' เป้าหมาย)',hint:'คิดจากขั้นที่แต่ละเป้าหมายถึงตามสีในชีต เป้าหมายที่ยังไม่เทสีนับเป็น 0%'};
+  }
+  if(S.tab==='draft'||S.tab==='proc'){
+    var ph=PH[S.tab], P=a.phase[ph.key];
+    return {actual:P.actual,expected:P.expected,verdict:P.verdict,forecast:P.forecast,label:'ความคืบหน้าขั้น'+ph.name,hint:'ยังไม่ได้กำหนดช่วงเวลาของขั้นนี้ จึงยังเทียบกับแผนไม่ได้'};
+  }
+  var O=a.overall;
+  return {actual:O.actual,expected:O.expected,verdict:O.verdict,forecast:O.forecast,label:'ความคืบหน้ารวมทั้งสองขั้น',hint:'ต้องกำหนดช่วงเวลาของทั้งสองขั้นก่อน จึงจะเทียบความคืบหน้ารวมกับแผนได้'};
+}
+function winText(ph){ var w=win(ph); return w?fmtD(w.s)+' – '+fmtDY(w.e):'ยังไม่กำหนด'; }
+function heroHTML(a){
+  var n=S.tasks.length, P=scopeOf(a);
+  var asof=S.snapshot?'สถานะ ณ วันที่ '+S.snapshot.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Bangkok'})+' เวลา '+S.snapshot.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'})+' น.':'';
+  var left='<div><h1 class="title">'+esc(CONFIG.TITLE)+'</h1>'+(asof?'<p class="asof">'+asof+'</p>':'')+'<p class="sub">'+(n?'ทั้งหมด '+n+' ประเด็น':'')+'</p>'
+    +'<div class="wins"><span>ขั้นที่ 1 ยกร่าง: '+winText(PH.draft)+'</span><span>ขั้นที่ 2 ดำเนินการ: '+winText(PH.proc)+'</span></div></div>';
+  var right='';
+  if(n&&P.actual!=null){
+    var act=Math.round(P.actual), exp=P.expected==null?null:Math.round(P.expected), fc='';
+    if(P.forecast){ var f=P.forecast; fc='ถ้าทำด้วยความเร็วเท่านี้ คาดว่าจะครบราว '+fmtD(f.date)+(f.late>2?' (ช้ากว่าแผน '+f.late+' วัน)':(f.late<-2?' (เร็วกว่าแผน '+Math.abs(f.late)+' วัน)':' (ใกล้เคียงแผน)')); }
+    else if(exp==null) fc=P.hint;
+    right='<div><div class="plan-top"><div><div class="big">'+act+'<small>%</small></div><div class="cap">'+esc(P.label)+'</div></div>'
+      +(exp!=null?'<div><div class="mid">'+exp+'%</div><div class="cap">ควรถึงตามแผน ณ วันที่สถานะ</div></div>':'')
+      +(P.verdict?'<div class="verdict sev-'+P.verdict.s+'">'+esc(P.verdict.t)+'</div>':'')
+      +'</div><div class="rail" role="img" aria-label="ความคืบหน้า '+act+' เปอร์เซ็นต์'+(exp!=null?' แผน '+exp+' เปอร์เซ็นต์':'')+'"><i class="rail-fill" style="width:'+act+'%"></i>'
+      +(exp!=null?'<b class="rail-tick" style="left:'+exp+'%"></b>':'')+'</div><div class="forecast">'+esc(fc)+'</div></div>';
+  }
+  return '<section class="hero">'+left+right+'</section>';
+}
+function tabsHTML(a){
+  var fc=flaggedCount(a), bad=a.issues.some(function(i){return i.sev==='bad';}), n=S.tasks.length;
+  var tabs=[['overview','ภาพรวม',''],
+    ['targets','รายเป้า',S.tg?'<span class="cnt">'+tgStats().rep+'/'+tgStats().n+'</span>':''],
+    ['draft','ขั้นที่ 1 ยกร่าง template',n?'<span class="cnt">'+a.phase.draft.fin+'/'+n+'</span>':''],
+    ['proc','ขั้นที่ 2 สถานะดำเนินการ',n?'<span class="cnt">'+a.phase.proc.fin+'/'+n+'</span>':''],
+    ['timeline','ไทม์ไลน์',''],
+    ['check','ตรวจแผน',fc?'<span class="cnt sev-'+(bad?'bad':'warn')+'">'+fc+'</span>':'']];
+  var h='<div class="bar"><div class="tabs" role="tablist">';
+  tabs.forEach(function(t){ h+='<button class="tab" role="tab" aria-selected="'+(S.tab===t[0])+'" data-act="tab" data-tab="'+t[0]+'">'+t[1]+t[2]+'</button>'; });
+  return h+'</div></div>';
+}
+function panelHTML(a){
+  if(!S.tasks.length){
+    if(S.loading) return '<div class="empty"><p>กำลังโหลดข้อมูลจากชีต…</p></div>';
+    return '<div class="empty"><h3>ยังไม่มีข้อมูล</h3><div>อ่านข้อมูลจากชีตไม่ได้ ดูรายละเอียดด้านบน</div></div>';
+  }
+  if(S.tab==='timeline') return timelineHTML(a);
+  if(S.tab==='check') return checkHTML(a);
+  if(S.tab==='draft'||S.tab==='proc') return phaseHTML(a,PH[S.tab]);
+  if(S.tab==='targets') return targetsHTML();
+  return overviewHTML(a);
+}
+function searchHTML(){ return '<div class="tools"><input id="q" class="search" type="search" placeholder="ค้นหาประเด็น ผู้รับผิดชอบ หรือกอง" value="'+esc(S.q)+'" aria-label="ค้นหา"></div>'; }
+function matchQ(t){ var q=S.q.trim().toLowerCase(); return !q||(dn(t)+' '+t.owner+' '+t.downer+' '+t.unit).toLowerCase().indexOf(q)>=0; }
+function listHTML(a){ return S.tab==='targets'?tgRowsHTML():((S.tab==='draft'||S.tab==='proc')?rowsHTML(a,PH[S.tab]):ovTableHTML(a)); }
+
+/* --- per-target tab (from sheet "สถานะการจัดทำรงปจป 2569", status = cell fill colour) --- */
+function prepTargets(T){
+  if(!T||!T.legend||!T.plans) return null;
+  var map={}; T.legend.forEach(function(x,i){ x.idx=i+1; map[x.k]=x; });
+  T.map=map; T.final=T.legend[T.legend.length-1].k;
+  T.plans.forEach(function(p){ p.all=p.y2.concat(p.y1); });
+  return T;
+}
+function tgPct(t){ var x=S.tg.map[t.stage]; return x?Math.round(x.idx/S.tg.legend.length*100):0; }
+function tgStats(){
+  if(!S.tg) return null;
+  var all=[]; S.tg.plans.forEach(function(p){ all=all.concat(p.all); });
+  var n=all.length, rep=all.filter(function(t){return !!t.stage;}).length;
+  return {n:n,rep:rep,fin:all.filter(function(t){return t.stage===S.tg.final;}).length,unk:all.filter(function(t){return t.stage==='?';}).length,
+    y2:S.tg.plans.reduce(function(a,p){return a+p.y2.length;},0),y1:S.tg.plans.reduce(function(a,p){return a+p.y1.length;},0),
+    avg:n?all.reduce(function(a,t){return a+tgPct(t);},0)/n:0,all:all};
+}
+function inkFor(hex){
+  var h=String(hex||'').replace('#',''); if(h.length!==6) return '#000';
+  var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);
+  return (0.299*r+0.587*g+0.114*b)>150?'#111':'#fff';
+}
+function tgMatch(t,f){ return f==='all'||(f==='none'?!t.stage:t.stage===f); }
+function targetsHTML(){
+  if(!S.tg) return '<div class="empty"><div>ไฟล์นี้ยังไม่มีข้อมูลรายเป้า</div></div>';
+  var G=tgStats(), f=S.filter.tg;
+  var h='<div class="sec"><dl class="stats">'
+    +'<div class="stat"><dt>เป้าหมายทั้งหมด</dt><dd>'+G.n+'<small>Y2 '+G.y2+' เป้า  Y1 '+G.y1+' เป้า</small></dd></div>'
+    +'<div class="stat"><dt>เทสีสถานะแล้ว</dt><dd>'+G.rep+'<small>'+Math.round(G.n?G.rep/G.n*100:0)+'% ของเป้าหมายทั้งหมด</small></dd></div>'
+    +'<div class="stat"><dt>ถึงขั้น '+esc(S.tg.map[S.tg.final].label)+'</dt><dd>'+G.fin+'<small>จาก '+G.n+' เป้าหมาย</small></dd></div>'
+    +'<div class="stat"><dt>ความคืบหน้าเฉลี่ย</dt><dd>'+Math.round(G.avg)+'%<small>นับ '+S.tg.legend.length+' ขั้นเท่ากัน</small></dd></div>'
+    +(G.unk?'<div class="stat sev-warn"><dt>สีที่ไม่ตรงกับ legend</dt><dd style="color:var(--c)">'+G.unk+'<small style="color:var(--ink-2)">นับเป็นยังไม่ระบุสถานะ</small></dd></div>':'')
+    +'</dl></div>';
+  var cnt={none:0,'?':0}; S.tg.legend.forEach(function(x){cnt[x.k]=0;});
+  G.all.forEach(function(t){ cnt[t.stage||'none']++; });
+  h+='<div class="pipe tg-pipe" role="group" aria-label="กรองตามสถานะรายเป้า">';
+  h+='<button class="stage" data-act="filter" data-ph="tg" data-f="all" aria-pressed="'+(f==='all')+'"><span class="stage-n">'+G.n+'</span><span class="stage-l">ทั้งหมด</span></button>';
+  h+='<button class="stage" style="--c:var(--line)" data-act="filter" data-ph="tg" data-f="none" aria-pressed="'+(f==='none')+'"><span class="stage-n">'+cnt.none+'</span><span class="stage-l">ยังไม่เทสีสถานะ</span></button>';
+  S.tg.legend.forEach(function(x){
+    h+='<button class="stage tg-st" style="--c:'+esc(x.color)+'" data-act="filter" data-ph="tg" data-f="'+x.k+'" aria-pressed="'+(f===x.k)+'"><span class="stage-n">'+cnt[x.k]+'</span><span class="stage-l">'+esc(x.label)+'</span></button>';
+  });
+  if(cnt['?']) h+='<button class="stage" style="--c:var(--warn)" data-act="filter" data-ph="tg" data-f="?" aria-pressed="'+(f==='?')+'"><span class="stage-n">'+cnt['?']+'</span><span class="stage-l">สีไม่ตรงกับ legend</span></button>';
+  h+='</div>'+searchHTML()+'<div id="rows">'+tgRowsHTML()+'</div>';
+  h+='<p class="tg-note">สถานะอ่านจากสีที่เทในแต่ละช่องเป้าหมายของชีต “สถานะการจัดทำรงปจป 2569” เทียบกับสีหัวตาราง ชี้ที่รหัสเป้าหมายเพื่อดูชื่อขั้น</p>';
+  return h;
+}
+function tgChip(t,f){
+  var x=S.tg.map[t.stage], dim=!tgMatch(t,f);
+  var lab=x?x.label:(t.stage==='?'?'สีไม่ตรงกับ legend':'ยังไม่เทสีสถานะ');
+  var bg=x?x.color:(t.stage==='?'?t.color:'');
+  var style=bg?' style="background:'+esc(bg)+';color:'+inkFor(bg)+';border-color:transparent"':'';
+  return '<span class="tchip'+(dim?' dim':'')+'"'+style+' title="'+esc(t.code+': '+lab)+'">'+esc(t.code)+'</span>';
+}
+function tgRowsHTML(){
+  var f=S.filter.tg, q=S.q.trim().toLowerCase();
+  var list=S.tg.plans.filter(function(p){
+    if(f!=='all'&&!p.all.some(function(t){return tgMatch(t,f);})) return false;
+    if(!q) return true;
+    return ((p.no!=null?p.no+'. ':'')+p.name+' '+p.owner+' '+p.unit).toLowerCase().indexOf(q)>=0||p.all.some(function(t){return t.code.indexOf(q)>=0;});
+  });
+  if(!list.length) return '<div class="empty"><div>ไม่พบแผนแม่บทตามตัวกรองที่เลือก</div></div>';
+  return '<div class="tg-list">'+list.map(function(p){
+    var pct=p.all.length?Math.round(p.all.reduce(function(a,t){return a+tgPct(t);},0)/p.all.length):0;
+    var rep=p.all.filter(function(t){return !!t.stage;}).length;
+    return '<div class="tg-row"><div class="tg-head"><div class="r-name">'+esc((p.no!=null?p.no+'. ':'')+p.name)+'</div>'
+      +'<div class="r-meta"><span>'+esc(p.owner||'–')+'</span><span>'+esc(p.unit||'–')+'</span><span>เทสีแล้ว '+rep+'/'+p.all.length+'</span></div>'
+      +'<div class="r-prog"><div class="pbar"><i style="width:'+pct+'%"></i></div><span class="pct">'+pct+'%</span></div></div>'
+      +'<div class="tg-chips">'+(p.y2.length?'<span class="tg-grp">Y2</span>'+p.y2.map(function(t){return tgChip(t,f);}).join(''):'')
+      +(p.y1.length?'<span class="tg-grp">Y1</span>'+p.y1.map(function(t){return tgChip(t,f);}).join(''):'')+'</div></div>';
+  }).join('')+'</div>';
+}
+
+function overviewHTML(a){
+  var h='<div class="phases">';
+  PHL.forEach(function(ph,i){
+    var P=a.phase[ph.key];
+    if(i===1) h+='<div class="phase-arrow" aria-hidden="true">→</div>';
+    h+='<button class="phase-card" data-act="tab" data-tab="'+ph.key+'"><span class="pc-step">ขั้นที่ '+ph.step+'</span><span class="pc-name">'+esc(ph.name)+'</span>'
+      +'<span class="pc-pct">'+Math.round(P.actual||0)+'%</span><div class="pbar"><i style="width:'+Math.round(P.actual||0)+'%"></i></div>'
+      +'<span class="pc-sub">ผ่านขั้นนี้แล้ว '+P.fin+' จาก '+P.n+' ประเด็น  ยังไม่รายงาน '+P.nost+'</span>'
+      +(P.verdict&&P.expected!=null?'<span class="pc-sub sev-'+P.verdict.s+'" style="color:var(--c);font-weight:600">'+esc(P.verdict.t)+'</span>':'')+'</button>';
+  });
+  h+='</div>';
+  var cnt={}; BUCKETS.forEach(function(b){cnt[b[0]]=0;});
+  S.tasks.forEach(function(t){cnt[bucket(t)]++;});
+  h+='<div class="pipe" role="group" aria-label="กรองตามช่วงของกระบวนการ">';
+  h+='<button class="stage" data-act="filter" data-ph="ov" data-f="all" aria-pressed="'+(S.filter.ov==='all')+'"><span class="stage-n">'+S.tasks.length+'</span><span class="stage-l">ทั้งหมด</span></button>';
+  BUCKETS.forEach(function(b){
+    h+='<button class="stage st-'+b[2]+'" data-act="filter" data-ph="ov" data-f="'+b[0]+'" aria-pressed="'+(S.filter.ov===b[0])+'"><span class="stage-n">'+cnt[b[0]]+'</span><span class="stage-l">'+b[1]+'</span></button>';
+  });
+  return h+'</div>'+searchHTML()+'<div id="rows">'+ovTableHTML(a)+'</div>';
+}
+function ovTableHTML(a){
+  var list=sorted(S.tasks).filter(function(t){ return (S.filter.ov==='all'||bucket(t)===S.filter.ov)&&matchQ(t); });
+  if(!list.length) return '<div class="empty"><div>ไม่พบประเด็นตามตัวกรองที่เลือก</div></div>';
+  return '<div class="tbl-wrap"><table class="ovt"><thead><tr><th>ประเด็น</th><th>ผู้รับผิดชอบ</th><th>กอง</th><th>1 ยกร่าง template</th><th>2 สถานะดำเนินการ</th><th>ภาพรวม</th></tr></thead><tbody>'
+    +list.map(function(t){
+      return '<tr class="h-'+a.byTask[t.id].worst+'"><td class="nm">'+esc(dn(t))+'</td>'
+        +'<td>'+esc(t.owner||'–')+(t.downer?'<br><small class="muted">ยกร่าง: '+esc(t.downer)+'</small>':'')+'</td>'
+        +'<td>'+esc(t.unit||'–')+'</td><td>'+chip(t.ds)+'</td><td>'+chip(t.ps)+'</td>'
+        +'<td><div class="ovbar"><div class="pbar"><i style="width:'+t.overall+'%"></i></div><span class="pct">'+t.overall+'%</span></div></td></tr>';
+    }).join('')+'</tbody></table></div>';
+}
+function phaseHTML(a,ph){
+  var counts={}; ph.stages.forEach(function(s){counts[s.k]=0;});
+  S.tasks.forEach(function(t){counts[st(t,ph).k]++;});
+  var f=S.filter[ph.key];
+  var h='<div class="pipe" role="group" aria-label="กรองตามสถานะ">';
+  h+='<button class="stage" data-act="filter" data-ph="'+ph.key+'" data-f="all" aria-pressed="'+(f==='all')+'"><span class="stage-n">'+S.tasks.length+'</span><span class="stage-l">ทั้งหมด</span></button>';
+  ph.stages.forEach(function(s){
+    h+='<button class="stage st-'+s.cls+'" data-act="filter" data-ph="'+ph.key+'" data-f="'+s.k+'" aria-pressed="'+(f===s.k)+'"><span class="stage-n">'+counts[s.k]+'</span><span class="stage-l">'+esc(s.label)+'</span></button>';
+  });
+  return h+'</div>'+searchHTML()+'<div id="rows">'+rowsHTML(a,ph)+'</div>';
+}
+function rowsHTML(a,ph){
+  var f=S.filter[ph.key];
+  var list=sorted(S.tasks).filter(function(t){ return (f==='all'||st(t,ph).k===f)&&matchQ(t); });
+  if(!list.length) return '<div class="empty"><div>ไม่พบประเด็นตามตัวกรองที่เลือก</div></div>';
+  var w=win(ph), dates=w?fmtD(w.s)+' – '+fmtD(w.e):'ยังไม่กำหนดช่วงเวลา', other=ph===PH.draft?PH.proc:PH.draft;
+  return '<div class="rows">'+list.map(function(t){
+    var b=a.byTask[t.id], s=st(t,ph);
+    var top=b.issues.filter(function(i){return i.phase===ph.key&&i.sev!=='info';})[0];
+    var meta='<span>'+(ownerOf(t,ph)?esc(ownerOf(t,ph)):'ไม่ระบุผู้รับผิดชอบ')+'</span>'+(t.unit?'<span>'+esc(t.unit)+'</span>':'')
+      +'<span>'+dates+'</span><span>ขั้น'+other.short+': '+esc(st(t,other).label)+'</span>'+(t.note?'<span>หมายเหตุ: '+esc(t.note)+'</span>':'');
+    return '<div class="row vrow h-'+b.health[ph.key]+'">'
+      +'<div class="r-main"><div class="r-name">'+esc(dn(t))+'</div><div class="r-meta">'+meta+'</div>'
+      +(top?'<div class="r-issue sev-'+top.sev+'">'+esc(top.msg)+'</div>':'')+'</div>'
+      +'<div class="r-status">'+chip(s)+'</div>'
+      +'<div class="r-prog"><div class="pbar" role="img" aria-label="ความคืบหน้า '+s.pct+' เปอร์เซ็นต์"><i style="width:'+s.pct+'%"></i></div><span class="pct">'+s.pct+'%</span></div></div>';
+  }).join('')+'</div>';
+}
+
+function timelineHTML(a){
+  var td=today();
+  var plan=S.show.plan?S.plan.filter(function(p){var s=pd(p.es),e=pd(p.ee);return s&&e&&e>=s;}):[];
+  var ranges=plan.map(function(p){return {s:pd(p.es),e:pd(p.ee)};});
+  PHL.forEach(function(ph){ var w=win(ph); if(w&&S.show[ph.key]) ranges.push(w); });
+  var zoomBtns=[['day','รายวัน'],['week','รายสัปดาห์'],['month','ภาพรวม']].map(function(z){
+    return '<button data-act="zoom" data-z="'+z[0]+'" aria-pressed="'+(S.zoom===z[0])+'">'+z[1]+'</button>';}).join('');
+  var toggles=(S.plan.length?[['plan','แผนรายงานประจำปี 2569']]:[]).concat([['draft','1 ยกร่าง template'],['proc','2 สถานะดำเนินการ']]).map(function(x){
+    return '<label class="chk"><input type="checkbox" data-chg="show" data-k="'+x[0]+'"'+(S.show[x[0]]?' checked':'')+'> '+x[1]+'</label>';}).join('');
+  var h='<div class="tl-tools"><div class="seg" role="group" aria-label="ระดับการซูม">'+zoomBtns+'</div>'+toggles+'</div>';
+  if(S.planError) h+='<p class="muted">อ่านแผนรายงานประจำปีจากเพจแผนงาน กยป. ไม่ได้ จึงไม่แสดงในไทม์ไลน์</p>';
+  if(!ranges.length) return h+'<div class="empty"><h3>ยังวาดไทม์ไลน์ไม่ได้</h3><div>ยังไม่มีช่วงเวลาที่แสดงได้</div></div>';
+  var min=ranges[0].s, max=ranges[0].e;
+  ranges.forEach(function(r){ if(r.s<min)min=r.s; if(r.e>max)max=r.e; });
+  if(td>=addDays(min,-14)&&td<=addDays(max,14)){ if(td<min)min=td; if(td>max)max=td; }
+  min=addDays(min,-2); max=addDays(max,5);
+  var total=diff(min,max)+1, dw={day:26,week:12,month:5}[S.zoom]||12, W=total*dw;
+  var hdr='', i=0;
+  while(i<total){
+    var d=addDays(min,i), j=i;
+    while(j<total&&addDays(min,j).getMonth()===d.getMonth())j++;
+    hdr+='<div class="tl-mon" style="left:'+(i*dw)+'px;width:'+((j-i)*dw)+'px">'+d.toLocaleDateString('th-TH',{month:'long',year:'numeric'})+'</div>';
+    i=j;
+  }
+  for(var k=0;k<total;k++){
+    var dd=addDays(min,k), dow=dd.getDay();
+    if(dw>=20) hdr+='<div class="tl-d'+((dow===0||dow===6)?' we':'')+'" style="left:'+(k*dw)+'px;width:'+dw+'px">'+dd.getDate()+'</div>';
+    else if(dw>=10&&dow===1) hdr+='<div class="tl-d" style="left:'+(k*dw)+'px;width:'+(7*dw)+'px;padding-left:4px;text-align:left">'+dd.getDate()+'</div>';
+  }
+  var tIn=td>=min&&td<=max, tx=diff(min,td)*dw+dw/2;
+  if(tIn) hdr+='<div class="tl-today-tag" style="left:'+tx+'px">วันที่สถานะ</div>';
+  var under='';
+  if(dw>=10){ for(var m=0;m<total;m++){ var w2=addDays(min,m).getDay(); if(w2===0||w2===6) under+='<div class="we-col" style="left:'+(m*dw)+'px;width:'+dw+'px"></div>'; } }
+  var over=tIn?'<div class="today-line" style="left:'+tx+'px"></div>':'';
+  var secRow=function(html){ return '<div class="tl-row tl-sec"><div class="tl-label"><strong>'+html+'</strong></div><div class="tl-track" style="width:'+W+'px"></div></div>'; };
+  var rows='';
+  if(plan.length){
+    rows+=secRow('แผนรายงานประจำปี 2569 (จากแผนงาน กยป.)');
+    rows+=plan.map(function(p){
+      var s=pd(p.es), e=pd(p.ee), left=diff(min,s)*dw, width=Math.max(dw*0.8,(diff(s,e)+1)*dw-2);
+      var stp=p.status==='เสร็จแล้ว'?'done':(p.status==='กำลังทำ'?'doing':'wait');
+      var tip=p.label+' / '+(p.status||'ไม่ระบุสถานะ')+' / '+fmtD(s)+' – '+fmtD(e)+(p.detail?' / '+p.detail:'')+(p.completed&&pd(p.completed)?' / เสร็จเมื่อ '+fmtD(pd(p.completed)):'');
+      var lab=width>=120?'<span class="tl-txt">'+esc(p.status||'')+'</span>':'';
+      return '<div class="tl-row"><div class="tl-label" title="'+esc(tip)+'"><span class="pl-name '+(p.top?'top':'sub')+'">'+esc(p.label)+'</span><small>'+fmtD(s)+' – '+fmtD(e)+'</small></div>'
+        +'<div class="tl-track" style="width:'+W+'px"><div class="pl-bar pl-'+stp+(p.top?' top':'')+'" style="left:'+left+'px;width:'+width+'px" title="'+esc(tip)+'">'+lab+'</div></div></div>';
+    }).join('');
+  }
+  PHL.forEach(function(ph){
+    if(!S.show[ph.key]) return;
+    var w=win(ph);
+    if(!w){ rows+=secRow(esc('ขั้นที่ '+ph.step+' '+ph.name+': ยังไม่ได้กำหนดช่วงเวลา')); return; }
+    var ex=expectedFor(w,td), left=diff(min,w.s)*dw, width=Math.max(dw*0.8,(diff(w.s,w.e)+1)*dw-2);
+    rows+=secRow(esc('ขั้นที่ '+ph.step+' '+ph.name+' ('+S.tasks.length+')'));
+    rows+=sorted(S.tasks).map(function(t){
+      var s=st(t,ph), hb=a.byTask[t.id].health[ph.key], hc=(hb==='bad'||hb==='warn')?' h-'+hb:'';
+      var tick=(s.k!==ph.final&&ex>0&&ex<100)?'<b class="tl-tick" style="left:'+ex.toFixed(1)+'%"></b>':'';
+      var label=width>=190?'<span class="tl-txt">'+s.pct+'%  '+esc(s.label)+'</span>':(width>=70?'<span class="tl-txt">'+s.pct+'%</span>':'');
+      var tip=dn(t)+' / ขั้น'+ph.short+': '+s.label+' '+s.pct+'%';
+      return '<div class="tl-row"><div class="tl-label" title="'+esc(tip)+'"><span class="pl-name top">'+esc(dn(t))+'</span><small>'+esc((ownerOf(t,ph)||'ไม่ระบุผู้รับผิดชอบ')+(t.unit?'  '+t.unit:''))+'</small></div>'
+        +'<div class="tl-track" style="width:'+W+'px"><div class="tl-bar st-'+s.cls+hc+'" style="left:'+left+'px;width:'+width+'px" title="'+esc(tip)+'">'
+        +'<i class="tl-fill" style="width:'+s.pct+'%"></i>'+label+tick+'</div></div></div>';
+    }).join('');
+  });
+  h+='<div class="tl-scroll"'+(tIn?' data-todayx="'+(LABELW+tx)+'"':'')+'><div class="tl-inner" style="width:'+(LABELW+W)+'px">'
+    +'<div class="tl-head"><div class="tl-corner">รายการ</div><div class="tl-hdr" style="width:'+W+'px">'+hdr+'</div></div>'
+    +'<div class="tl-body"><div class="tl-under" style="width:'+W+'px">'+under+'</div>'+rows+'<div class="tl-over" style="width:'+W+'px">'+over+'</div></div></div></div>';
+  h+='<div class="legend">'+CLASSES.map(function(c){return '<span class="st-'+c[0]+'"><i class="sw"></i>'+c[1]+'</span>';}).join('')
+    +'<span><i class="tick-sw"></i>ขีดดำ = ตำแหน่งที่ควรถึงตามแผน ณ วันที่สถานะ</span><span>กรอบแดงหรือเหลือง = ประเด็นที่ต้องดู</span></div>';
+  if(plan.length) h+='<div class="legend"><strong>แผนรายงานประจำปี:</strong><span class="pl-done"><i class="sw"></i>เสร็จแล้ว</span><span class="pl-doing"><i class="sw"></i>กำลังทำ</span><span class="pl-wait"><i class="sw"></i>รอเริ่ม</span></div>';
+  return h;
+}
+
+function checkHTML(a){
+  var O=a.overall, td=today();
+  var h='<div class="sec"><dl class="stats">';
+  h+='<div class="stat"><dt>ความคืบหน้ารวม</dt><dd>'+Math.round(O.actual||0)+'%<small>นับทุกขั้นของทั้งสองช่วงเท่ากัน</small></dd></div>';
+  h+='<div class="stat'+(O.verdict?' sev-'+O.verdict.s:'')+'"><dt>เทียบกับแผน (รวม)</dt><dd style="color:var(--c,var(--ink))">'+esc(O.verdict?O.verdict.t:'ไม่มีข้อมูล')+'<small style="color:var(--ink-2)">'+(O.expected!=null?'ควรถึง '+Math.round(O.expected)+'% ณ '+fmtD(td):'ต้องกำหนดช่วงเวลาทั้งสองขั้น')+'</small></dd></div>';
+  PHL.forEach(function(ph){
+    var P=a.phase[ph.key];
+    h+='<div class="stat'+(P.verdict&&P.expected!=null?' sev-'+P.verdict.s:'')+'"><dt>ขั้นที่ '+ph.step+' '+esc(ph.name)+'</dt><dd>'+Math.round(P.actual||0)+'%<small>ผ่านแล้ว '+P.fin+'/'+P.n+(P.expected!=null?'  ควรถึง '+Math.round(P.expected)+'% ('+esc(P.verdict.t)+')':'  ยังไม่กำหนดช่วงเวลา')+'</small></dd></div>';
+  });
+  var cnt={}, lab={};
+  S.tasks.forEach(function(t){ PHL.forEach(function(ph){ var s=st(t,ph); if(s.idx>=1&&s.k!==ph.final){ var k=ph.key+':'+s.k; cnt[k]=(cnt[k]||0)+1; lab[k]='ขั้น'+ph.short+': '+s.label; } }); });
+  var topK=Object.keys(cnt).sort(function(x,y){return cnt[y]-cnt[x];})[0];
+  h+='<div class="stat"><dt>ขั้นที่ประเด็นรออยู่มากที่สุด</dt><dd>'+(topK?cnt[topK]+' ประเด็น':'ไม่มี')+'<small>'+(topK?esc(lab[topK]):'ยังไม่มีประเด็นค้างระหว่างขั้น')+'</small></dd></div></dl></div>';
+
+  var mw=missingWindows();
+  var rules=[
+    ['กำหนดช่วงเวลาครบทั้งสองขั้น',null,'info'],
+    ['ไม่มีประเด็นเลยกำหนด',['overdue'],'bad'],
+    ['คืบหน้าทันตามเวลา',['behind','latestart','near'],'warn'],
+    ['ลำดับขั้นถูกต้อง (ยกร่างผ่านก่อนเข้าขั้นดำเนินการ)',['seq'],'warn'],
+    ['สถานะในชีตตรงกับรายการสถานะ',['unknown'],'warn'],
+    ['ทุกประเด็นรายงานสถานะขั้นยกร่างแล้ว',['nostatus'],'info'],
+    ['ประเด็นที่ผ่านยกร่างเริ่มขั้นดำเนินการแล้ว',['waitproc'],'info']
+  ];
+  h+='<div class="sec"><h3>รายการตรวจ</h3><div class="rules">'+rules.map(function(r){
+    var n,res;
+    if(!r[1]){ n=mw.length; res=n?'ยังไม่กำหนด: '+mw.map(function(p){return p.name;}).join(', '):'ผ่าน'; }
+    else { var ids={}; a.issues.forEach(function(i){ if(r[1].indexOf(i.code)>=0) ids[i.taskId]=1; }); n=Object.keys(ids).length; res=n?'พบ '+n+' ประเด็น':'ผ่าน'; }
+    return '<div class="rule sev-'+(n?r[2]:'ok')+'"><span class="mark" aria-hidden="true">'+(n?'!':'✓')+'</span><span>'+r[0]+'</span><span class="res">'+esc(res)+'</span></div>';
+  }).join('')+'</div></div>';
+
+  var shown=a.issues.filter(function(i){return i.code!=='nostatus'&&i.code!=='waitproc';});
+  var groups=[['bad','ต้องจัดการเร็ว'],['warn','ควรเฝ้าระวัง'],['info','ข้อมูลที่ควรเติม']];
+  h+='<div class="sec"><h3>สิ่งที่ต้องดู</h3>';
+  if(!shown.length) h+='<div class="empty"><div>ไม่พบปัญหาในแผนตอนนี้</div></div>';
+  else {
+    h+='<div class="issues">';
+    groups.forEach(function(g){
+      var items=shown.filter(function(i){return i.sev===g[0];}).sort(function(x,y){return x.name.localeCompare(y.name,'th',{numeric:true});});
+      if(!items.length) return;
+      h+='<div class="sev-'+g[0]+'"><div class="issue-h">'+g[1]+' ('+items.length+')</div>'+items.map(function(i){
+        return '<div class="issue sev-'+i.sev+'"><i class="dot"></i><p><strong><span class="tag">'+esc(PH[i.phase].short)+'</span>'+esc(i.name)+'</strong><span>'+esc(i.msg)+'</span></p><span></span></div>';
+      }).join('')+'</div>';
+    });
+    h+='</div>';
+  }
+  h+='</div>';
+  [['nostatus','ยังไม่รายงานสถานะขั้นยกร่าง'],['waitproc','ผ่านยกร่างแล้ว รอเริ่มขั้นดำเนินการ']].forEach(function(L){
+    var ids={}; a.issues.forEach(function(i){ if(i.code===L[0]) ids[i.taskId]=1; });
+    var ts=sorted(S.tasks.filter(function(t){return ids[t.id];}));
+    if(ts.length) h+='<div class="sec"><h3>'+L[1]+' ('+ts.length+')</h3><p class="namelist">'+ts.map(function(t){return '<span>'+esc(dn(t))+'</span>';}).join('')+'</p></div>';
+  });
+  var un={};
+  S.tasks.forEach(function(t){
+    var k=t.unit||'ไม่ระบุกอง', o=un[k]||(un[k]={n:0,df:0,pf:0,over:0,sum:0});
+    o.n++; o.sum+=t.overall;
+    if(t.ds.k===PH.draft.final)o.df++;
+    if(t.ps.k===PH.proc.final)o.pf++;
+    if(a.byTask[t.id].issues.some(function(i){return i.code==='overdue';}))o.over++;
+  });
+  h+='<div class="sec"><h3>ภาพรวมตามกอง</h3><div class="tbl-wrap"><table><thead><tr><th>กอง</th><th class="n">ประเด็น</th><th class="n">ผ่านยกร่าง</th><th class="n">ผ่านขั้นดำเนินการ</th><th class="n">เลยกำหนด</th><th class="n">ความคืบหน้ารวมเฉลี่ย</th></tr></thead><tbody>'
+    +Object.keys(un).sort(function(x,y){return un[y].n-un[x].n||x.localeCompare(y,'th');}).map(function(k){
+      var o=un[k];
+      return '<tr><td>'+esc(k)+'</td><td class="n">'+o.n+'</td><td class="n">'+o.df+'</td><td class="n">'+o.pf+'</td><td class="n"'+(o.over?' style="color:var(--bad);font-weight:600"':'')+'>'+o.over+'</td><td class="n">'+Math.round(o.sum/o.n)+'%</td></tr>';
+    }).join('')+'</tbody></table></div></div>';
+  return h;
+}
+
+/* ---------- events ---------- */
+var app=$('#app');
+app.addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]'); if(!b) return;
+  var act=b.getAttribute('data-act');
+  if(act==='tab'){ S.tab=b.getAttribute('data-tab'); if(S.tab!=='timeline')S.tlScrolled=false; try{history.replaceState(null,'','#'+S.tab);}catch(err){} render(); }
+  else if(act==='filter'){ S.filter[b.getAttribute('data-ph')]=b.getAttribute('data-f'); render(); }
+  else if(act==='zoom'){ S.zoom=b.getAttribute('data-z'); S.tlScrolled=false; render(); }
+});
+app.addEventListener('input',function(e){
+  if(e.target.id==='q'){ S.q=e.target.value; var rows=$('#rows'); if(rows) rows.innerHTML=listHTML(analyze(S.tasks)); }
+});
+app.addEventListener('change',function(e){
+  var el=e.target;
+  if(el.getAttribute('data-chg')==='show'){ S.show[el.getAttribute('data-k')]=el.checked; S.tlScrolled=false; render(); }
+});
+function readHash(){ var h=(location.hash||'').replace('#',''); if(['overview','targets','draft','proc','timeline','check'].indexOf(h)>=0) S.tab=h; }
+window.addEventListener('hashchange',function(){ readHash(); render(); });
+readHash();
+loadEmbedded();
+render();
+})();
+</script>
+</body>
+</html>
